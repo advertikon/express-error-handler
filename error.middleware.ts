@@ -6,13 +6,26 @@ const logger = bunyan.createLogger({ name: process.env.npm_package_name as strin
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function ErrorMiddleware (error: Error, req :Request, resp: Response, next: NextFunction) {
+    let code;
+    let body;
+
     if (error instanceof BaseException) {
         // @ts-ignore
         (req.loger ? req.loger : logger).error(error);
-        resp.status(error.code).json({ status: 'error', message: error.message });
+        code = error.code;
+        body = { status: 'error', message: error.message };
     } else {
         // @ts-ignore
         (req.loger ? req.loger : logger).error(error);
-        resp.status(500).json({ status: 'error', message: 'Internal error' });
+        code = 500;
+        body = { status: 'error', message: 'Internal error' };
     }
+
+    // @ts-ignore
+    if (resp.sentry) {
+        // @ts-ignore
+        body.error_id = resp.sentry;
+    }
+
+    resp.status(code).json(body);
 }
