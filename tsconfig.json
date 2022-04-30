@@ -5,8 +5,8 @@
 
   "compilerOptions": {
     "lib": ["es2021"],
-    "module": "commonjs",
-    "target": "es2021",
+    "module": "esnext",
+    "target": "esnext",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
