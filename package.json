@@ -1,6 +1,6 @@
 {
   "name": "@bogochunas/error-handler",
-  "version": "1.6.1",
+  "version": "1.7.1",
   "description": "Exception based Express error handler",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "@typescript-eslint/parser": "^5.18.0"
   },
   "dependencies": {
-    "bunyan": "^1.8.15"
+    "bunyan": "^1.8.15",
+    "zod": "^3.17.10"
   }
 }

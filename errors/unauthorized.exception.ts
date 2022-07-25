@@ -1,5 +1,6 @@
 import { BaseException } from './base.exception.js';
 
 export class UnauthorizedException extends BaseException {
-    code = 401;
+    status_code = 401;
+    message = 'Unauthorized';
 }

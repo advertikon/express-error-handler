@@ -1,5 +1,6 @@
 import { BaseException } from './base.exception.js';
 
 export class TeaPotException extends BaseException {
-    code = 418;
+    status_code = 418;
+    message = 'I am a tea pot';
 }

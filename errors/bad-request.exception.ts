@@ -1,5 +1,6 @@
 import { BaseException } from './base.exception.js';
 
 export class BadRequestException extends BaseException {
-    code = 403;
+    status_code = 400;
+    message = 'Bad request';
 }

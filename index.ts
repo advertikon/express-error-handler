@@ -5,6 +5,7 @@ import { UnprocessableEntityException } from './errors/unprocessable-entity.exce
 import { TeaPotException } from './errors/tea-pot.exception.js';
 import { BaseException } from './errors/base.exception.js';
 import { ErrorMiddleware } from './error.middleware.js';
+import { ValidationException } from './errors/validation.exception.js';
 import { BadRequestException } from './errors/bad-request.exception.js';
 
 export {
@@ -15,5 +16,6 @@ export {
     BaseException,
     ErrorMiddleware,
     TeaPotException,
+    ValidationException,
     BadRequestException
 }

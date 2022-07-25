@@ -1,5 +1,6 @@
 import { BaseException } from './base.exception.js';
 
 export class UnprocessableEntityException extends BaseException {
-    code = 422;
+    status_code = 422;
+    message = 'Unprocessed entity';
 }
