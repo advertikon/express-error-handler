@@ -34,7 +34,7 @@ export function ErrorMiddleware () {
             body = { status: 'error', message: error.message, code };
         } else if (ZodError.name === error.constructor.name) {
             code = 400;
-            body = { status: 'validation error', message: (error as ZodError).issues.map(i => i.message).join(' ,'), code };
+            body = { status: 'error', message: (error as ZodError).issues.map(i => i.message).join(', '), code };
         } else {
             (req.logger ? req.logger : logger).error(error, 'Error');
             code = 500;
