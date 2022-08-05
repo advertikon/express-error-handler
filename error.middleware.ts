@@ -22,15 +22,19 @@ declare interface ResponseBody {
     code: number;
 }
 
+declare interface MaybeCustomError extends Error {
+    isCustom?: boolean;
+}
+
 export function ErrorMiddleware () {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    return function (error: Error, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
+    return function (error: MaybeCustomError, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
         let code;
         let body: ResponseBody;
 
-        if (error instanceof BaseException) {
+        if (error.isCustom) {
             (req.logger ? req.logger : logger).error(error, 'Error');
-            code = error.status_code;
+            code = (error as BaseException).status_code;
             body = { status: 'error', message: error.message, code };
         } else if (ZodError.name === error.constructor.name) {
             code = 400;
