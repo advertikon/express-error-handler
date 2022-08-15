@@ -38,7 +38,13 @@ export function ErrorMiddleware () {
             body = { status: 'error', message: error.message, code };
         } else if (ZodError.name === error.constructor.name) {
             code = 400;
-            body = { status: 'error', message: (error as ZodError).issues.map(i => i.message).join(', '), code };
+            body = {
+                status: 'error',
+                message: (error as ZodError).issues
+                    // @ts-ignore
+                    .map(i => `${i.path} ${i.message}. Expected ${i.expected}, received: ${i.received}`).join(', '),
+                code
+            };
         } else {
             (req.logger ? req.logger : logger).error(error, 'Error');
             code = 500;
@@ -52,3 +58,4 @@ export function ErrorMiddleware () {
         resp.status(code).json(body);
     } as unknown as PathParams
 }
+
