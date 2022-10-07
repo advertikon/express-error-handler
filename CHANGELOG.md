@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/advertikon/express-error-handler/compare/v1.0.0...v1.0.1) (2022-10-07)
+
+
+### Performance Improvements
+
+* New version ([3c29daf](https://github.com/advertikon/express-error-handler/commit/3c29daf00b93866d795be5d4f7bdbc5df1ef35a0))
+
 # 1.0.0 (2022-10-07)
 
 
