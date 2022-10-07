@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/advertikon/express-error-handler/compare/v1.1.0...v1.1.1) (2022-10-07)
+
+
+### Performance Improvements
+
+* Switch to VError ([083759a](https://github.com/advertikon/express-error-handler/commit/083759a2bb29fcb46ddb06eab5c0c27945bfd933))
+
 # [1.1.0](https://github.com/advertikon/express-error-handler/compare/v1.0.1...v1.1.0) (2022-10-07)
 
 
