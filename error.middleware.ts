@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
-import { BaseException } from './errors/base.exception.js';
+import { NextFunction, Request, Response } from 'express';
 import bunyan from 'bunyan';
 import Logger from 'bunyan';
 import { PathParams } from 'express-serve-static-core';
-import { ZodError } from 'zod';
+import VError from 'verror';
+import { ulid } from 'ulid';
 
 const logger = bunyan.createLogger({ name: process.env.npm_package_name as string });
 
@@ -20,35 +20,28 @@ declare interface ResponseBody {
     message: string;
     error_id?: string;
     code: number;
-}
-
-declare interface MaybeCustomError extends Error {
-    isCustom?: boolean;
+    errorTrackingCode: string;
 }
 
 export function ErrorMiddleware () {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    return function (error: MaybeCustomError, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
-        let code;
-        let body: ResponseBody;
+    return function (error: Error|VError, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
+        const errorTrackingCode = ulid();
+        let code = 500;
 
-        if (error.isCustom) {
-            (req.logger ? req.logger : logger).error(error, 'Error');
-            code = (error as BaseException).status_code;
-            body = { status: 'error', message: error.message, code };
-        } else if (ZodError.name === error.constructor.name) {
-            code = 400;
-            body = {
-                status: 'error',
-                message: (error as ZodError).issues
-                    // @ts-ignore
-                    .map(i => `${i.path} ${i.message}. Expected ${i.expected}, received: ${i.received}`).join(', '),
-                code
-            };
-        } else {
-            (req.logger ? req.logger : logger).error(error, 'Error');
-            code = 500;
-            body = { status: 'error', message: 'Internal error', code };
+        const body: ResponseBody = {
+            status: 'error',
+            errorTrackingCode,
+            code,
+            message: 'Internal server error'
+        };
+
+        (req.logger ? req.logger : logger).error(error, 'Error', { errorCode: errorTrackingCode });
+
+        if (error instanceof VError) {
+            code = VError.info(error).code;
+            body.message = error.message;
+            body.code = code;
         }
 
         if (resp.sentry) {
