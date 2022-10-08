@@ -1,3 +1,11 @@
+# [2.1.0](https://github.com/advertikon/express-error-handler/compare/v2.0.1...v2.1.0) (2022-10-08)
+
+
+### Features
+
+* add yup validation error support ([c597fca](https://github.com/advertikon/express-error-handler/commit/c597fca1298d0dad699f8994f6494b1108becac7))
+* yup error fix, do not log validation and auth errors ([e1fa3c2](https://github.com/advertikon/express-error-handler/commit/e1fa3c27fcefa5c9844e9ebaab1bf54981ce40b5))
+
 ## [2.0.1](https://github.com/advertikon/express-error-handler/compare/v2.0.0...v2.0.1) (2022-10-08)
 
 
