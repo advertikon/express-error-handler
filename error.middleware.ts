@@ -4,6 +4,7 @@ import Logger from 'bunyan';
 import { PathParams } from 'express-serve-static-core';
 import VError from 'verror';
 import { ulid } from 'ulid';
+import {ValidationError} from 'yup';
 
 const logger = bunyan.createLogger({ name: process.env.npm_package_name as string });
 
@@ -25,7 +26,7 @@ declare interface ResponseBody {
 
 export function ErrorMiddleware () {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    return function (error: Error|VError, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
+    return function (error: Error|VError|ValidationError, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
         const errorTrackingCode = ulid();
         let code = 500;
 
@@ -38,7 +39,7 @@ export function ErrorMiddleware () {
 
         (req.logger ? req.logger : logger).error(error, 'Error', { errorCode: errorTrackingCode });
 
-        if (error.constructor.name === 'VError') {
+        if (['VError', 'ValidationError'].includes(error.constructor.name)) {
             code = VError.info(error).code;
             body.message = error.message;
             body.code = code;
