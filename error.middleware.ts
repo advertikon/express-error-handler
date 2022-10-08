@@ -4,7 +4,7 @@ import Logger from 'bunyan';
 import { PathParams } from 'express-serve-static-core';
 import VError from 'verror';
 import { ulid } from 'ulid';
-import {ValidationError} from 'yup';
+import { HTTP_ERROR } from './error.js';
 
 const logger = bunyan.createLogger({ name: process.env.npm_package_name as string });
 
@@ -25,24 +25,36 @@ declare interface ResponseBody {
 }
 
 export function ErrorMiddleware () {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    return function (error: Error|VError|ValidationError, req :LoggerRequest, resp: LoggerResponse, next: NextFunction) {
+    return function (
+        error: Error|VError,
+        req :LoggerRequest,
+        resp: LoggerResponse,
+        next: NextFunction
+    ) {
         const errorTrackingCode = ulid();
         let code = 500;
+        let logable = false;
 
-        const body: ResponseBody = {
+        const body = {
             status: 'error',
-            errorTrackingCode,
             code,
             message: 'Internal server error'
-        };
+        } as ResponseBody;
 
-        (req.logger ? req.logger : logger).error(error, 'Error', { errorCode: errorTrackingCode });
-
-        if (['VError', 'ValidationError'].includes(error.constructor.name)) {
+        if (error.constructor.name === 'VError') {
             code = VError.info(error).code;
             body.message = error.message;
             body.code = code;
+            logable = ![
+                HTTP_ERROR.FORBIDDEN,
+                HTTP_ERROR.UNAUTHORIZED,
+                HTTP_ERROR.VALIDATION,
+            ].includes(error.name as HTTP_ERROR);
+        }
+
+        if (logable) {
+            (req.logger ? req.logger : logger).error(error, 'Error', { errorCode: errorTrackingCode });
+            body.errorTrackingCode = errorTrackingCode;
         }
 
         if (resp.sentry) {

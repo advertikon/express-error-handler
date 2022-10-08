@@ -9,7 +9,7 @@ import {
     CreateUnprocessedEntityError,
     CreateError
 } from './error.js';
-import { ZodErrorMiddleware } from './zod.middleware.js';
+import { ValidationErrorMiddleware } from './validation-error.middleware.js';
 import { ErrorMiddleware } from './error.middleware.js';
 
 export {
@@ -22,6 +22,6 @@ export {
     CreateNotFoundError,
     CreateBadRequestError,
     CreateUnprocessedEntityError,
-    ZodErrorMiddleware,
+    ValidationErrorMiddleware,
     ErrorMiddleware
 }

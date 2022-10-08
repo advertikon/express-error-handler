@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from 'express';
 import { CreateValidationError } from './error.js';
 import { ZodError } from 'zod';
 
-export function ZodErrorMiddleware () {
-    return function (error: ZodError, req: Request, resp: Response, next: NextFunction) {
+export function ValidationErrorMiddleware () {
+    return function (error: Error|ZodError, req: Request, resp: Response, next: NextFunction) {
         if (error.constructor.name === 'ZodError') {
             next(CreateValidationError(
                 'Validation error. ' +
@@ -11,6 +11,8 @@ export function ZodErrorMiddleware () {
                 error.errors.map(m => `${m.code} (${m.path}): expected: '${m.expected}', received: '${m.received}'`)
                     .join(', ')
             ));
+        } else if (error.constructor.name === 'ValidationError') {
+            next(CreateValidationError(`Validation error: ${error.message}`));
         } else {
             next(error);
         }
