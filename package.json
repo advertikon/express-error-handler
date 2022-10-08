@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Exception based Express error handler",
   "main": "index.js",
+  "type": "module",
   "exports": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

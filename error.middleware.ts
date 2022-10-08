@@ -38,7 +38,7 @@ export function ErrorMiddleware () {
 
         (req.logger ? req.logger : logger).error(error, 'Error', { errorCode: errorTrackingCode });
 
-        if (error instanceof VError) {
+        if (error.constructor.name === 'VError') {
             code = VError.info(error).code;
             body.message = error.message;
             body.code = code;
