@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/advertikon/express-error-handler/compare/v2.0.0...v2.0.1) (2022-10-08)
+
+
+### Bug Fixes
+
+* reformat ZodError message, switch to esnext module ([8ed3cdb](https://github.com/advertikon/express-error-handler/commit/8ed3cdbd60f3778f29a4288f240d7c49996c2945))
+
 # [2.0.0](https://github.com/advertikon/express-error-handler/compare/v1.1.1...v2.0.0) (2022-10-07)
 
 
