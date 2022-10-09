@@ -33,7 +33,7 @@ export function ErrorMiddleware () {
     ) {
         const errorTrackingCode = ulid();
         let code = 500;
-        let logable = false;
+        let logable = true;
 
         const body = {
             status: 'error',
