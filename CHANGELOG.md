@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/advertikon/express-error-handler/compare/v2.1.0...v2.1.1) (2022-10-09)
+
+
+### Bug Fixes
+
+* fix logable state bug ([7ccc393](https://github.com/advertikon/express-error-handler/commit/7ccc3935aa7377ac79e376c36ec2ea94dca4f9b8))
+
 # [2.1.0](https://github.com/advertikon/express-error-handler/compare/v2.0.1...v2.1.0) (2022-10-08)
 
 
