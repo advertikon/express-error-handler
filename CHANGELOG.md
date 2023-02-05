@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/advertikon/express-error-handler/compare/v2.1.1...v2.2.0) (2023-02-05)
+
+
+### Features
+
+* FetchError can fetch validation message ([d38c417](https://github.com/advertikon/express-error-handler/commit/d38c417bdcda930a57bdd6ccf427aa154a4f3559))
+
 ## [2.1.1](https://github.com/advertikon/express-error-handler/compare/v2.1.0...v2.1.1) (2022-10-09)
 
 
