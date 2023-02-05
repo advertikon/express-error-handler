@@ -1,5 +1,6 @@
 import VError from 'verror';
 import { Response } from 'node-fetch';
+import {isAwaitExpression} from "tsutils";
 
 export enum HTTP_ERROR {
     NOT_FOUND = 'HttpErrorNotFound',
@@ -30,13 +31,22 @@ function getErrorByCode (code:  number): HTTP_ERROR {
     }
 }
 
-export function FetchError (response: Response): VError {
+export async function FetchError (response: Response): Promise<VError> {
+    let validationMessage = '';
+
+    if (response.status === 400) {
+        try {
+            const body = await response.json();
+            validationMessage = body.message;
+        }catch{}
+    }
+
     return new VError({
         name: getErrorByCode(response.status),
         info: {
             code: response.status
         }
-    }, 'Error querying %s: %s', response.url, response.statusText)
+    }, 'Error querying %s: %s', response.url, validationMessage || response.statusText)
 }
 
 export function CreateError (name: string, message: string, info?: object, cause: Error|null = null) {
