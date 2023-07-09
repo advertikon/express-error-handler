@@ -9,11 +9,8 @@ import { HTTP_ERROR } from './error.js';
 const logger = bunyan.createLogger({ name: process.env.npm_package_name as string });
 
 declare interface LoggerRequest extends Request {
-    logger: Logger
-}
-
-declare interface LoggerResponse extends Response {
-    sentry: string;
+    logger: Logger,
+    req_id: string;
 }
 
 declare interface ResponseBody {
@@ -28,10 +25,10 @@ export function ErrorMiddleware () {
     return function (
         error: Error|VError,
         req :LoggerRequest,
-        resp: LoggerResponse,
+        resp: Response,
         next: NextFunction
     ) {
-        const errorTrackingCode = req.get('x-req-id') || ulid();
+        const errorTrackingCode = req.req_id || ulid();
         let code = 500;
         let logable = true;
 
