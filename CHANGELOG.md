@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/advertikon/express-error-handler/compare/v2.2.0...v2.3.0) (2023-07-09)
+
+
+### Features
+
+* use request ID as error tracking code ([eb4b01d](https://github.com/advertikon/express-error-handler/commit/eb4b01d3980a0828a1365470431448958d1ba3b0))
+
 # [2.2.0](https://github.com/advertikon/express-error-handler/compare/v2.1.1...v2.2.0) (2023-02-05)
 
 
