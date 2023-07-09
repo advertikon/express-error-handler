@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/advertikon/express-error-handler/compare/v2.3.0...v2.4.0) (2023-07-09)
+
+
+### Features
+
+* take request ID from reaquest object ([ac0ac09](https://github.com/advertikon/express-error-handler/commit/ac0ac091ffeeb470dfce90c75b642058645002f4))
+
 # [2.3.0](https://github.com/advertikon/express-error-handler/compare/v2.2.0...v2.3.0) (2023-07-09)
 
 
