@@ -31,7 +31,7 @@ export function ErrorMiddleware () {
         resp: LoggerResponse,
         next: NextFunction
     ) {
-        const errorTrackingCode = ulid();
+        const errorTrackingCode = req.get('x-req-id') || ulid();
         let code = 500;
         let logable = true;
 
@@ -55,10 +55,6 @@ export function ErrorMiddleware () {
         if (logable) {
             (req.logger ? req.logger : logger).error(error, 'Error', { errorCode: errorTrackingCode });
             body.errorTrackingCode = errorTrackingCode;
-        }
-
-        if (resp.sentry) {
-            body.error_id = resp.sentry;
         }
 
         resp.status(code).json(body);
