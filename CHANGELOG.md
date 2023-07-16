@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/advertikon/express-error-handler/compare/v2.4.0...v2.5.0) (2023-07-16)
+
+
+### Features
+
+* add support for 5xx error codes ([6924bca](https://github.com/advertikon/express-error-handler/commit/6924bcaf7144dc54848bfca81d72713663e3a723))
+
 # [2.4.0](https://github.com/advertikon/express-error-handler/compare/v2.3.0...v2.4.0) (2023-07-09)
 
 
