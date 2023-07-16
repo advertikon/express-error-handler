@@ -1,6 +1,5 @@
 import VError from 'verror';
 import { Response } from 'node-fetch';
-import {isAwaitExpression} from "tsutils";
 
 export enum HTTP_ERROR {
     NOT_FOUND = 'HttpErrorNotFound',
@@ -10,6 +9,10 @@ export enum HTTP_ERROR {
     UNAUTHORIZED = 'HttpErrorUnauthorized',
     UNPROCESSABLE_ENTITY = 'HttpErrorUnprocessableEntity',
     VALIDATION = 'HttpErrorValidation',
+    INTERNAL_SERVER_ERROR = 'HttpErrorInternalServerError',
+    BAD_GATEWAY = 'HttpErrorBadGateway',
+    SERVICE_UNAVAILABLE = 'HttpErrorServiceUnavailable',
+    GATEWAY_TIMEOUT = 'HttpErrorGatewayTimeout',
 }
 
 function getErrorByCode (code:  number): HTTP_ERROR {
@@ -26,6 +29,14 @@ function getErrorByCode (code:  number): HTTP_ERROR {
             return HTTP_ERROR.UNAUTHORIZED;
         case 422:
             return HTTP_ERROR.UNPROCESSABLE_ENTITY;
+        case 500:
+            return HTTP_ERROR.INTERNAL_SERVER_ERROR;
+        case 502:
+            return HTTP_ERROR.BAD_GATEWAY;
+        case 503:
+            return HTTP_ERROR.SERVICE_UNAVAILABLE;
+        case 504:
+            return HTTP_ERROR.GATEWAY_TIMEOUT;
         default:
             throw new Error(`Unsupported error code: '${code}'`);
     }
