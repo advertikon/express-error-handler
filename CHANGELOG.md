@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/advertikon/express-error-handler/compare/v2.6.0...v2.7.0) (2023-09-02)
+
+
+### Features
+
+* add option to suppress error message ([1e06101](https://github.com/advertikon/express-error-handler/commit/1e061015efcdf1af4d3ce9a245082fdd6b9747fb))
+
 # [2.6.0](https://github.com/advertikon/express-error-handler/compare/v2.5.0...v2.6.0) (2023-09-02)
 
 
