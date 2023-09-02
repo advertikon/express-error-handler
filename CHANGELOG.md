@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/advertikon/express-error-handler/compare/v2.7.0...v2.7.1) (2023-09-02)
+
+
+### Bug Fixes
+
+* add cause when create validaton error ([e48ece5](https://github.com/advertikon/express-error-handler/commit/e48ece5a6d8fe05aad0271163fb9f5d97d33ae7a))
+
 # [2.7.0](https://github.com/advertikon/express-error-handler/compare/v2.6.0...v2.7.0) (2023-09-02)
 
 
