@@ -22,7 +22,8 @@ declare interface ResponseBody {
 }
 
 type Options = {
-    nonLogableExceptions: HTTP_ERROR[]
+    nonLogableExceptions: HTTP_ERROR[];
+    defaultErrorMessage: string;
 }
 
 export function ErrorMiddleware (options: Options = {
@@ -30,7 +31,8 @@ export function ErrorMiddleware (options: Options = {
         HTTP_ERROR.FORBIDDEN,
         HTTP_ERROR.UNAUTHORIZED,
         HTTP_ERROR.VALIDATION,
-    ]
+    ],
+    defaultErrorMessage: ''
  }) {
     return function (
         error: Error|VError,
@@ -50,7 +52,7 @@ export function ErrorMiddleware (options: Options = {
 
         if (error.constructor.name === 'VError') {
             code = VError.info(error).code;
-            body.message = error.message;
+            body.message = options.defaultErrorMessage || error.message;
             body.code = code;
             logable = !options.nonLogableExceptions.includes(error.name as HTTP_ERROR);
         }
