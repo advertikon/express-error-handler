@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/advertikon/express-error-handler/compare/v2.5.0...v2.6.0) (2023-09-02)
+
+
+### Features
+
+* make list of unlogable errors configurable ([da1434e](https://github.com/advertikon/express-error-handler/commit/da1434e0b0a650875884ccc85192fc841fcc66b0))
+
 # [2.5.0](https://github.com/advertikon/express-error-handler/compare/v2.4.0...v2.5.0) (2023-07-16)
 
 
