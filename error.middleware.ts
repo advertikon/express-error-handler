@@ -21,7 +21,17 @@ declare interface ResponseBody {
     errorTrackingCode: string;
 }
 
-export function ErrorMiddleware () {
+type Options = {
+    nonLogableExceptions: HTTP_ERROR[]
+}
+
+export function ErrorMiddleware (options: Options = {
+    nonLogableExceptions: [
+        HTTP_ERROR.FORBIDDEN,
+        HTTP_ERROR.UNAUTHORIZED,
+        HTTP_ERROR.VALIDATION,
+    ]
+ }) {
     return function (
         error: Error|VError,
         req :LoggerRequest,
@@ -42,11 +52,7 @@ export function ErrorMiddleware () {
             code = VError.info(error).code;
             body.message = error.message;
             body.code = code;
-            logable = ![
-                HTTP_ERROR.FORBIDDEN,
-                HTTP_ERROR.UNAUTHORIZED,
-                HTTP_ERROR.VALIDATION,
-            ].includes(error.name as HTTP_ERROR);
+            logable = !options.nonLogableExceptions.includes(error.name as HTTP_ERROR);
         }
 
         if (logable) {
