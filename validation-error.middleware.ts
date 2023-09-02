@@ -12,7 +12,7 @@ export function ValidationErrorMiddleware () {
                     .join(', ')
             ));
         } else if (error.constructor.name === 'ValidationError') {
-            next(CreateValidationError(`Validation error: ${error.message}`));
+            next(CreateValidationError(`Validation error: ${error.message}`, {}, error));
         } else {
             next(error);
         }
