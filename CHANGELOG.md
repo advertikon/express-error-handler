@@ -1,3 +1,10 @@
+## [2.7.2](https://github.com/advertikon/express-error-handler/compare/v2.7.1...v2.7.2) (2023-10-18)
+
+
+### Bug Fixes
+
+* change how Zod error is formatted ([aadf1af](https://github.com/advertikon/express-error-handler/commit/aadf1af413f92abb5465d5e437f5cb75511ec52f))
+
 ## [2.7.1](https://github.com/advertikon/express-error-handler/compare/v2.7.0...v2.7.1) (2023-09-02)
 
 
