@@ -49,6 +49,7 @@ export async function FetchError (response: Response): Promise<VError> {
         try {
             const body = await response.json();
             validationMessage = body.message;
+            // eslint-disable-next-line no-empty
         }catch{}
     }
 
