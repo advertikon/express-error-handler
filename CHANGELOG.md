@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/advertikon/express-error-handler/compare/v2.7.2...v2.8.0) (2023-10-19)
+
+
+### Features
+
+* export HTTP_ERROR enum ([a0bc81c](https://github.com/advertikon/express-error-handler/commit/a0bc81ccc66e654baed30553d555ed5b42a35d9b))
+
 ## [2.7.2](https://github.com/advertikon/express-error-handler/compare/v2.7.1...v2.7.2) (2023-10-18)
 
 

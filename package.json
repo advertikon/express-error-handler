@@ -1,6 +1,6 @@
 {
   "name": "@bogochunas/error-handler",
-  "version": "2.7.2",
+  "version": "2.8.0",
   "description": "Exception based Express error handler",
   "main": "index.js",
   "type": "module",
