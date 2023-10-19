@@ -8,7 +8,7 @@ type ErrorType = {
     [key: string]: ErrorType;
 };
 
-function ZodErrorMessage(error: ErrorType, key = '', message: string[] = []): string[] {
+function ZodErrorMessage (error: ErrorType, key = '', message: string[] = []): string[] {
     const { _errors, ...rest } = error;
 
     if (Array.isArray(_errors) && _errors.length > 0) {
