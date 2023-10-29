@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/advertikon/express-error-handler/compare/v2.8.0...v2.9.0) (2023-10-29)
+
+
+### Features
+
+* add CreateErrorByCode method ([9f7249f](https://github.com/advertikon/express-error-handler/commit/9f7249f86d46ed047c0fd3890ccce11859d2c925))
+
 # [2.8.0](https://github.com/advertikon/express-error-handler/compare/v2.7.2...v2.8.0) (2023-10-19)
 
 
