@@ -8,6 +8,7 @@ import {
     CreateTeaPotError,
     CreateUnprocessedEntityError,
     CreateError,
+    CreateErrorByCode,
     HTTP_ERROR
 } from './error.js';
 import { ValidationErrorMiddleware } from './validation-error.middleware.js';
@@ -25,5 +26,6 @@ export {
     CreateUnprocessedEntityError,
     ValidationErrorMiddleware,
     ErrorMiddleware,
+    CreateErrorByCode,
     HTTP_ERROR
 }
