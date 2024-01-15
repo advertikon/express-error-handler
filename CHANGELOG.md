@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/advertikon/express-error-handler/compare/v2.9.0...v2.10.0) (2024-01-15)
+
+
+### Features
+
+* add catch-all middleware ([ad4bbd9](https://github.com/advertikon/express-error-handler/commit/ad4bbd99b37cde1932efef33f42f439090493ff8))
+
 # [2.9.0](https://github.com/advertikon/express-error-handler/compare/v2.8.0...v2.9.0) (2023-10-29)
 
 
