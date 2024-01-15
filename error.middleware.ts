@@ -1,25 +1,13 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Response } from 'express';
 import bunyan from 'bunyan';
-import Logger from 'bunyan';
 import { PathParams } from 'express-serve-static-core';
 import VError from 'verror';
 import { ulid } from 'ulid';
 import { HTTP_ERROR } from './error.js';
+import { LoggerRequest } from './types.js';
+import { ResponseBody } from './types.js';
 
 const logger = bunyan.createLogger({ name: process.env.npm_package_name as string });
-
-declare interface LoggerRequest extends Request {
-    logger: Logger,
-    req_id: string;
-}
-
-declare interface ResponseBody {
-    status: string;
-    message: string;
-    error_id?: string;
-    code: number;
-    errorTrackingCode: string;
-}
 
 type Options = {
     nonLogableExceptions: HTTP_ERROR[];

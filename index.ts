@@ -13,6 +13,7 @@ import {
 } from './error.js';
 import { ValidationErrorMiddleware } from './validation-error.middleware.js';
 import { ErrorMiddleware } from './error.middleware.js';
+import { CatchAllMiddleware } from './catch-all.middleware.js';
 
 export {
     FetchError,
@@ -27,5 +28,6 @@ export {
     ValidationErrorMiddleware,
     ErrorMiddleware,
     CreateErrorByCode,
-    HTTP_ERROR
+    HTTP_ERROR,
+    CatchAllMiddleware
 }
