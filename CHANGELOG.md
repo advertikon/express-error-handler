@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/advertikon/express-error-handler/compare/v2.10.0...v3.0.0) (2024-09-28)
+
+
+### Features
+
+* do not catch unhandled errors ([d60ed8a](https://github.com/advertikon/express-error-handler/commit/d60ed8a22499dae640c953a69eb83a9b79e26650))
+
+
+### BREAKING CHANGES
+
+* unhandled errors not hadled by main middleware
+
 # [2.10.0](https://github.com/advertikon/express-error-handler/compare/v2.9.0...v2.10.0) (2024-01-15)
 
 
